@@ -21,7 +21,7 @@ export default function Game() {
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (gameStarted) {
-      const { count, speed } = flySettings[difficulty];
+      const { count } = flySettings[difficulty];
       const newFlies = Array.from({ length: count }, (_, index) => ({
         id: index,
         x: Math.random() * 80 + 10,
@@ -43,7 +43,7 @@ export default function Game() {
 
       return () => clearInterval(timer);
     }
-  }, [gameStarted, difficulty]);
+  }, [gameStarted, difficulty, flySettings]);
 
   useEffect(() => {
     if (flies.length === 0 && gameStarted) {
